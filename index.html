@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VYRO | Official Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* RESET & BASE STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0b0b;
+      color: #e0e0e0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .brand-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER & NAVIGATION */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11, 11, 11, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .brand-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 4px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    nav a {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #888;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .cart-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .cart-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      margin-top: 80px;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #0b0b0b 70%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .hero p {
+      color: #777;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* PRODUCTS SECTION */
+    .catalog {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+    }
+
+    .product-card {
+      background: #121212;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .product-card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-4px);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      background: #181818;
+    }
+
+    .product-info {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .product-details {
+      margin-bottom: 20px;
+    }
+
+    .product-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .product-specs {
+      font-size: 0.75rem;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .add-to-cart-btn {
+      width: 100%;
+      padding: 14px;
+      background: #fff;
+      color: #000;
+      border: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .add-to-cart-btn:hover {
+      background: #cccccc;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px 20px;
+      text-align: center;
+      color: #444;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    /* CART SLIDE-OVER */
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 100%;
+      max-width: 380px;
+      height: 100%;
+      background: #111;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 200;
+      transition: right 0.4s ease;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-drawer.active {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 15px;
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .cart-items {
+      flex-grow: 1;
+      overflow-y: auto;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+    }
+
+    .cart-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 14px;
+      background: #fff;
+      color: #000;
+      border: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 15px 20px; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="brand-logo">VYRO</div>
+    <nav>
+      <ul>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+    <button class="cart-btn" onclick="toggleCart()">CART (<span id="cart-count">0</span>)</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>VYRO ARCH & PARADOX</h1>
+    <p>Minimalist Heavyweight Streetwear</p>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <main class="catalog" id="shop">
+    <div class="section-title">Current Drop</div>
+    <div class="grid">
+
+      <!-- PRODUCT 1: HOODIE -->
+      <article class="product-card">
+        <!-- Replace src with your image path or web URL -->
+        <img class="product-img" src="183648.png" alt="VYRO Arch Hoodie">
+        <div class="product-info">
+          <div class="product-details">
+            <h2 class="product-name">VYRO Arch Hoodie</h2>
+            <div class="product-specs">450 GSM • 100% Cotton</div>
+            <div class="product-price">$69</div>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart('VYRO Arch Hoodie', 69)">Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- PRODUCT 2: JEANS -->
+      <article class="product-card">
+        <!-- Replace src with your image path or web URL -->
+        <img class="product-img" src="183732.png" alt="VYRO Paradox Denim">
+        <div class="product-info">
+          <div class="product-details">
+            <h2 class="product-name">VYRO Paradox Denim</h2>
+            <div class="product-specs">100% Cotton • Baggy Fit</div>
+            <div class="product-price">$79</div>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart('VYRO Paradox Denim', 79)">Add to Cart</button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 VYRO. All Rights Reserved.</p>
+  </footer>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="close-cart" onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p style="color: #666;">Your cart is empty.</p>
+    </div>
+    <div class="cart-footer">
+      <div style="display: flex; justify-content: space-between; font-weight: 600;">
+        <span>TOTAL:</span>
+        <span id="cartTotal">$0</span>
+      </div>
+      <button class="checkout-btn" onclick="alert('Proceeding to Checkout!')">Checkout</button>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    let cart = [];
+
+    function toggleCart() {
+      document.getElementById('cartDrawer').classList.toggle('active');
+    }
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCartUI();
+      toggleCart();
+    }
+
+    function updateCartUI() {
+      const cartCount = document.getElementById('cart-count');
+      const cartItemsContainer = document.getElementById('cartItems');
+      const cartTotal = document.getElementById('cartTotal');
+
+      cartCount.textContent = cart.length;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p style="color: #666;">Your cart is empty.</p>';
+        cartTotal.textContent = '$0';
+        return;
+      }
+
+      let total = 0;
+      cartItemsContainer.innerHTML = '';
+
+      cart.forEach((item, index) => {
+        total += item.price;
+        const itemElement = document.createElement('div');
+        itemElement.className = 'cart-item';
+        itemElement.innerHTML = `
+          <span>${item.name}</span>
+          <span>$${item.price}</span>
+        `;
+        cartItemsContainer.appendChild(itemElement);
+      });
+
+      cartTotal.textContent = `$${total}`;
+    }
+  </script>
+</body>
+</html>
